@@ -1,7 +1,10 @@
 header { 
     position: relative;
-    display: block;
+    display: inline-block
 }
 h1 {
     color: blueviolet;
+}
+.container {
+    padding: 10px;
 }
