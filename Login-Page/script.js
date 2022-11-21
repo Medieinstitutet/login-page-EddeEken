@@ -1,7 +1,6 @@
 const username = document.getElementById("username")
-const usernameBtn = document.getElementById("usernameBtn")
 const password = document.getElementById("password")
-const passwordBtn = document.getElementById("passwordBtn")
+const logInBtn = document.getElementById("logInBtn")
 
 // fånga och skriv ut värdena från de två inputen i LS
 
@@ -19,11 +18,32 @@ if (localStorage.getItem("personsRegister")) {
     localStorage.setItem("personsRegister", JSON.stringify(personsRegister));
 }
 
-//lyckat login 
+logInBtn.addEventListener("click", () => {
 
-//misslyckat login
+    // HÄMTA
+    let personsRegister = JSON.parse(localStorage.getItem("personsRegister"));
 
-/*Om besökaren ej är inloggad så skall ett inloggningsformulär visas.
-Är besökaren inloggad så skall istället en logga-ut knapp visas. */
+    // SKAPA NYTT OBJEKT
+    let newRegister = {
+        username: username.value,
+        password: password.value,
+    };
 
-// byt ut inloggningsformulären till en logga ut knapp när man har loggat in 
+    console.log("personsRegister", personsRegister);
+
+    // ÄNDRA
+    personsRegister.push(newRegister);
+
+    // SPARA
+    localStorage.setItem("personsRegister", JSON.stringify(personsRegister));
+
+})
+
+//lyckat login meddelande
+
+//misslyckat login meddelande 
+
+//Om besökaren ej är inloggad så skall ett inloggningsformulär visas.
+//Är besökaren inloggad så skall istället en logga-ut knapp visas.
+
+//byt ut inloggningsformulären till en logga-ut knapp när man har loggat in. 

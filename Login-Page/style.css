@@ -3,8 +3,13 @@ header {
     display: inline-block
 }
 h1 {
-    color: blueviolet;
+    color: black;
 }
 .container {
+    display: block;
     padding: 10px;
+}
+#logInBtn {
+    padding: 10px;
+    cursor: pointer;
 }
