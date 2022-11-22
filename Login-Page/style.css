@@ -5,11 +5,15 @@ header {
 h1 {
     color: black;
 }
-.container {
+#loggedOutView {
     display: block;
     padding: 10px;
 }
 #logInBtn {
+    padding: 10px;
+    cursor: pointer;
+}
+#createAccBtn {
     padding: 10px;
     cursor: pointer;
 }
