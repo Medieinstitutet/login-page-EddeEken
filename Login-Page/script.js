@@ -1,3 +1,4 @@
+const demo = document.getElementById("demo")
 const usernameInput = document.getElementById("usernameInput");
 const passwordInput = document.getElementById("passwordInput");
 const logInBtn = document.getElementById("logInBtn");
@@ -5,23 +6,22 @@ const createAccBtn = document.getElementById("createAccBtn");
 const loggedOutView = document.getElementById("loggedOutView");
 const loggedInView = document.getElementById("loggedInView");
 
+
+let personsRegister = [
+    {username:"janne", password:"test"},
+    {username:"edvin", password:"ekström"},
+    {username:"java", password:"script"},
+    {username:"potatis", password:"mannen"},
+];
+
+localStorage.setItem("personsRegister", JSON.stringify(personsRegister));
 // fånga och skriv ut värdena från de två inputen i LS
 
 if (localStorage.getItem("personsRegister")) {
     console.log("Det finns sparat i LS");
 } else {
     console.log("Finns inget sparat i LS");
-
-    let personsRegister = [
-        {username:"janne", password:"test"},
-        {username:"edvin", password:"ekström"},
-        {username:"java", password:"script"},
-        {username:"potatis", password:"mannen"},
-    ];
-
-    localStorage.setItem("personsRegister", JSON.stringify(personsRegister));
 }
-
 //lägg till ett nytt formulär när man trycker på create account 
 
 createAccBtn.addEventListener("click", () => {
@@ -41,6 +41,31 @@ createAccBtn.addEventListener("click", () => {
 
 })
 
+createAccBtn.addEventListener("click", () => {
+
+    
+
+})
+
+logInBtn.addEventListener("click", () => { 
+    console.log('klick på knapp ');
+  
+    for (i = 0; i < personsRegister.length; i++) {
+      if (usernameInput.value == personsRegister[i].username && passwordInput.value == personsRegister[i].password) {
+        demo.innerHTML = "Du är inloggad som: " + usernameInput.value;
+        return true;
+      }
+    }
+    demo.innerHTML = "Användaren finns inte";
+})
+
+/*if (localStorage.getItem("loggedInUser") !== "false") {
+    
+}
+else {
+    console.log("You Must Log In!");
+} */
+
 //FIXA DEN NEDAN
 /*logInBtn.addEventListener("click", () => {
     For (i = 0; i < personsRegister.length; i++) {
@@ -49,7 +74,7 @@ createAccBtn.addEventListener("click", () => {
         }
     };
 });
-
+*/
 //let showLoggedInView = docume
 
 //lyckat login meddelande
@@ -63,4 +88,4 @@ createAccBtn.addEventListener("click", () => {
 //byt ut inloggningsformulären till en logga-ut knapp när man har loggat in. 
 //tror om du har ett id på din button så kan du i javascript skriva style.display(none) eller något sånt
 //Sidan skall innehålla en header, en del för innehåll samt en footer.
-//Headern skall alltid visas och ändras dynamiskt för att visa rätt innehåll:
+//Headern skall alltid visas och ändras dynamiskt för att visa rätt innehåll
