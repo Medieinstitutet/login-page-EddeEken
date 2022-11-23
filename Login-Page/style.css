@@ -8,12 +8,42 @@ h1 {
 #loggedOutView {
     display: block;
     padding: 10px;
+
 }
-#logInBtn {
+
+.open-button {
     padding: 10px;
     cursor: pointer;
 }
-#createAccBtn {
+.form-popup {
+  display: none;
+  position: fixed;
+ top: 30%;
+  right: 50%;
+  border: 3px solid gray;
+  z-index: 9;
+}
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+.form-container {
+  width: 80%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+button {
     padding: 10px;
+    margin: 2px;
     cursor: pointer;
+}
+footer .disclaimer {
+    position: fixed;
+    bottom: 0px;
+    font-size: 1.2rem;
+    background-color: red;
+    color: yellow;
 }

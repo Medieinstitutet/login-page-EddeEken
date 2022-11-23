@@ -3,9 +3,11 @@ const usernameInput = document.getElementById("usernameInput");
 const passwordInput = document.getElementById("passwordInput");
 const logInBtn = document.getElementById("logInBtn");
 const createAccBtn = document.getElementById("createAccBtn");
-const loggedOutView = document.getElementById("loggedOutView");
-const loggedInView = document.getElementById("loggedInView");
-
+const closeBtn = document.getElementById("closeBtn");
+const createAccForm = document.getElementById("createAccForm")
+const password = document.getElementById("password")
+const passwordConfirm = document.getElementById("passwordConfirm")
+//fixa local storage så att det uppdateras när man lägger till fler
 
 let personsRegister = [
     {username:"janne", password:"test"},
@@ -15,15 +17,21 @@ let personsRegister = [
 ];
 
 localStorage.setItem("personsRegister", JSON.stringify(personsRegister));
-// fånga och skriv ut värdena från de två inputen i LS
 
 if (localStorage.getItem("personsRegister")) {
     console.log("Det finns sparat i LS");
 } else {
     console.log("Finns inget sparat i LS");
 }
-//lägg till ett nytt formulär när man trycker på create account 
 
+createAccForm.addEventListener("click", () => {
+    document.getElementById("accForm").style.display = "block";
+  })
+  
+closeBtn.addEventListener("click", () => {
+    document.getElementById("accForm").style.display = "none";
+  })
+  
 createAccBtn.addEventListener("click", () => {
 
     let personsRegister = JSON.parse(localStorage.getItem("personsRegister"));
@@ -41,12 +49,6 @@ createAccBtn.addEventListener("click", () => {
 
 })
 
-createAccBtn.addEventListener("click", () => {
-
-    
-
-})
-
 logInBtn.addEventListener("click", () => { 
     console.log('klick på knapp ');
   
@@ -59,23 +61,18 @@ logInBtn.addEventListener("click", () => {
     demo.innerHTML = "Användaren finns inte";
 })
 
+if (password === passwordConfirm) {
+    //log in;
+} else {
+    //do not log in;
+}
+
 /*if (localStorage.getItem("loggedInUser") !== "false") {
     
 }
 else {
     console.log("You Must Log In!");
 } */
-
-//FIXA DEN NEDAN
-/*logInBtn.addEventListener("click", () => {
-    For (i = 0; i < personsRegister.length; i++) {
-        If (personsRegister[i].password === passwordInput && personsRegister[i].username === usernameInput) {
-            loggedInView
-        }
-    };
-});
-*/
-//let showLoggedInView = docume
 
 //lyckat login meddelande
 

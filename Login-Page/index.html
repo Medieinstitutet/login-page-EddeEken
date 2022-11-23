@@ -14,15 +14,25 @@
     </header>
 
     <div id="loggedOutView">
-        <input type="text" placeholder="Username" id="usernameInput">
-        <input type="text" placeholder="Password" id="passwordInput"> <br> <br>
+        <input type="text" placeholder="Enter Username" id="usernameInput">
+        <input type="text" placeholder="Enter Password" id="passwordInput"> <br> <br>
         <button id="logInBtn">Log in</button>
-        <button id="createAccBtn">Create Account</button>
     </div>
-    <div id="loggedInView"></div>
+   
+<button id="createAccForm">Create Account</button>
+<div class="form-popup" id="accForm">
+  <form class="form-container">
+    <h1>Login</h1>
+    <input placeholder="Enter Username">
+    <input id="password" placeholder="Enter Password">
+    <input id="confirmPassword" placeholder="Confirm Password">
+    <button id="createAccBtn">Create Account</button>
+    <button type="button" id="closeBtn">Close</button>
+  </form>
+</div>
 
-    <footer>
-
-    </footer>
+<footer>
+    <p class="disclaimer">This website is an experiment and should not be used with actual passwords!</p>
+</footer>
 </body>
 </html>
