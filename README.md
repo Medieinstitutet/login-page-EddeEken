@@ -4,4 +4,4 @@ Användare registrarade i en object array [
 {username:"java", password:"script"},
 {username:"potatis", password:"mannen"}
 ]
-+ att man kan lägga till fler användare genom "create account" 
+plus att man kan lägga till fler användare genom "create account" 
