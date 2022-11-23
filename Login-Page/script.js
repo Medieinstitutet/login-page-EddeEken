@@ -45,11 +45,13 @@ createAccBtn.addEventListener("click", () => {
             password: passwordInput.value,
         };
     
-        console.log("personsRegister", personsRegister);
+        console.log("newRegister", newRegister);
     
         personsRegister.push(newRegister);
     
         localStorage.setItem("personsRegister", JSON.stringify(personsRegister));
+
+        message.insertAdjacentText = "You have successfully created an account!";
         
     } else {
         function createAccError() {
@@ -57,8 +59,6 @@ createAccBtn.addEventListener("click", () => {
         }
         createAccError();
     }
-
-
 })
 
 logInBtn.addEventListener("click", () => { 
@@ -81,6 +81,7 @@ logInBtn.addEventListener("click", () => {
         logOutBtn.style.margin = "2px"; 
         logOutBtn.style.cursor = "pointer";
         loggedInView.style.display = "block";
+        message.innerHTML = "You are logged in as: " + usernameInput.value;
         return true;
     } else {
         message.innerHTML = "User not found";
