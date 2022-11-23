@@ -44,6 +44,17 @@ footer .disclaimer {
     position: fixed;
     bottom: 0px;
     font-size: 1.2rem;
-    background-color: red;
-    color: yellow;
+    padding: 20PX;
+    background-color: lightskyblue;
+    color: black;
+}
+#message {
+    font-size: 1.2rem;
+    margin: 10px;
+}
+#loggedInView {
+    display: none;
+    font-size: 1.2rem;
+    margin: 10px;
+    color: blueviolet;
 }
