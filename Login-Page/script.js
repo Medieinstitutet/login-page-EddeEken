@@ -9,6 +9,13 @@ const passwordConfirm = document.getElementById("passwordConfirm");
 const loggedOutView = document.getElementById("loggedOutView");
 const message = document.getElementById("message");
 
+let personsRegister = [
+    {username:"janne", password:"test"},
+    {username:"edvin", password:"ekström"},
+    {username:"java", password:"script"},
+    {username:"potatis", password:"mannen"},
+]
+
 //fixa local storage så att det uppdateras när man lägger till fler
 
 createAccForm.addEventListener("click", () => {
@@ -24,14 +31,8 @@ if (localStorage.getItem("personsRegister")) {
 } else {
     console.log("Finns inget sparat i LS");
 
-    let personsRegister = [
-        {username:"janne", password:"test"},
-        {username:"edvin", password:"ekström"},
-        {username:"java", password:"script"},
-        {username:"potatis", password:"mannen"},
-    ]
-    
     localStorage.setItem("personsRegister", JSON.stringify(personsRegister));
+
 }
   
 createAccBtn.addEventListener("click", () => {
@@ -75,7 +76,8 @@ logInBtn.addEventListener("click", () => {
         logOutBtn.appendChild(textButton);
         logOut.appendChild(logOutBtn);
         logOutBtn.addEventListener("click", () => {
-            window.location.reload()
+            loggedInView.innerHTML = "";
+            message.innerHTML = "";
         })
         logOutBtn.style.padding = "10px"; 
         logOutBtn.style.margin = "2px"; 
@@ -89,10 +91,11 @@ logInBtn.addEventListener("click", () => {
     }
 })
 
+function reloadLogInStatus() {
 
-//lyckat login meddelande
+}
 
-//en funktion då för att ändra innehållet på sidan
+window
 
 //Om besökaren ej är inloggad så skall ett inloggningsformulär visas.
 //Är besökaren inloggad så skall istället en logga-ut knapp visas.
