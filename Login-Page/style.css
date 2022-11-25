@@ -39,15 +39,6 @@ button {
     margin: 2px;
     cursor: pointer;
 }
-footer .disclaimer {
-    position: fixed;
-    width: 96%;
-    bottom: 0px;
-    font-size: 1.2rem;
-    padding: 15PX;
-    background-color: lightskyblue;
-    color: black;
-}
 #message {
     font-size: 1.2rem;
     margin: 10px;
@@ -57,4 +48,13 @@ footer .disclaimer {
     font-size: 1.2rem;
     margin: 10px;
     color: blueviolet;
+}
+.disclaimer {
+    position: fixed;
+    width: 96%;
+    bottom: 0px;
+    font-size: 1.2rem;
+    padding: 14PX;
+    background-color: lightskyblue;
+    color: black;
 }
