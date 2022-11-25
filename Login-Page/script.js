@@ -1,6 +1,5 @@
 /*
 1. Localstorage - skapa konto
-2. förbli inloggad om man uppdaterar sidan 
 */
 
 const usernameInput = document.getElementById("usernameInput");
@@ -22,8 +21,6 @@ let personsRegister = [
     {username:"java", password:"script"},
     {username:"potatis", password:"mannen"},
 ]
- 
-//fixa local storage så att det uppdateras när man lägger till fler
  
 createAccForm.addEventListener("click", () => {
     document.getElementById("accForm").style.display = "block";
@@ -47,12 +44,7 @@ createAccBtn.addEventListener("click", () => {
         
         let personsRegister = JSON.parse(localStorage.getItem("personsRegister"));
 
-        let newRegister = {
-            username: userName.value,
-            password: password.value,
-        };
-
-        newRegister.push(personsRegister)
+        personsRegister.push({"username": userName.value,"password": password.value});
     
         localStorage.setItem('personsRegister', JSON.stringify(personsRegister));
 
@@ -78,6 +70,7 @@ logInBtn.addEventListener("click", () => {
         logOutBtn.style.cursor = "pointer";
         loggedInView.style.display = "block";
         message.innerHTML = "You are logged in as: " + usernameInput.value;
+        localStorage.setItem("loginStatus", "loggedIn");
         return true;
     } else {
         message.innerHTML = "User not found";
@@ -85,28 +78,34 @@ logInBtn.addEventListener("click", () => {
     }
 })
 
-        const logOut = document.getElementById("logOut");
-        let logOutBtn = document.createElement("button");
-        let textButton = document.createTextNode("Log Out");
-        logOutBtn.appendChild(textButton);
-        logOut.appendChild(logOutBtn);
-        logOutBtn.addEventListener("click", () => {
-            loggedInView.style.display = "none"
-            loggedOutView.style.display = "block"
-            createAccForm.style.display = "inline"
-            message.innerHTML = "";
-            loggedOutView.appendChild
-            createAccForm
-        })
+let LoggedIn = JSON.parse(localStorage.getItem("loggedIn"));
+
+const logOut = document.getElementById("logOut");
+let logOutBtn = document.createElement("button");
+let textButton = document.createTextNode("Log Out");
+logOutBtn.appendChild(textButton);
+logOut.appendChild(logOutBtn);
+    logOutBtn.addEventListener("click", () => {
+        loggedInView.style.display = "none"
+        loggedOutView.style.display = "block"
+        createAccForm.style.display = "inline"
+        message.innerHTML = "";
+        localStorage.removeItem("loginStatus");
+    })
 
 function reloadLogInStatus(logInStatus) {
     if (logInStatus === null) {
-
-    } else if (logInStatus === personsRegister) {
-        
+        //DO NOTHING
+    } else if (logInStatus === "loggedIn") {
+        loggedOutView.style.display = "none"
+        message.innerHTML = ""
+        createAccForm.style.display = "none"
+        logOutBtn.style.padding = "10px"; 
+        logOutBtn.style.margin = "2px"; 
+        logOutBtn.style.cursor = "pointer";
+        loggedInView.style.display = "block";
+        message.innerHTML = "You are logged in as: " + usernameInput.value;
     }
-
 }
 
-window.onload = reloadLogInStatus(localStorage.getItem("personsRegister"));
-
+window.onload = reloadLogInStatus(localStorage.getItem("loginStatus"))
