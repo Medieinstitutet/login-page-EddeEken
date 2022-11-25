@@ -1,7 +1,6 @@
 /*
 1. Localstorage - skapa konto
-2. Logga ut knapp som funkar
-3. förbli inloggad om man uppdaterar sidan 
+2. förbli inloggad om man uppdaterar sidan 
 */
 
 const usernameInput = document.getElementById("usernameInput");
@@ -15,6 +14,7 @@ const password = document.getElementById("password");
 const passwordConfirm = document.getElementById("passwordConfirm");
 const loggedOutView = document.getElementById("loggedOutView");
 const message = document.getElementById("message");
+const loggedInView = document.getElementById("loggedInView");
  
 let personsRegister = [
     {username:"janne", password:"test"},
@@ -38,11 +38,8 @@ if (localStorage.getItem("personsRegister")) {
 } else {
     console.log("Finns inget sparat i LS");
  
-    localStorage.setItem("personsRegister", JSON.stringify(personsRegister));
- 
+    localStorage.setItem('personsRegister', JSON.stringify(personsRegister));
 }
- 
-let personsRegisterTemp = JSON.parse(localStorage.getItem("personsRegister"));  
  
 createAccBtn.addEventListener("click", () => {
 
@@ -54,10 +51,10 @@ createAccBtn.addEventListener("click", () => {
             username: userName.value,
             password: password.value,
         };
+
+        newRegister.push(personsRegister)
     
-        personsRegisterTemp.push(newRegister);
-    
-        localStorage.removeItem("personsRegister", JSON.stringify(personsRegister));
+        localStorage.setItem('personsRegister', JSON.stringify(personsRegister));
 
         message.insertAdjacentText = "You have successfully created an account!";
         
@@ -73,19 +70,9 @@ logInBtn.addEventListener("click", () => {
     let personsRegister = JSON.parse(localStorage.getItem("personsRegister"));
     for (i = 0; i < personsRegister.length; i++) {
       if (usernameInput.value == personsRegister[i].username && passwordInput.value == personsRegister[i].password) {
-        loggedOutView.innerHTML = "";
-        message.innerHTML = "";
-        createAccForm.innerHTML = "";
-        const logOut = document.getElementById("logOut");
-        const loggedInView = document.getElementById("loggedInView");
-        let logOutBtn = document.createElement("button");
-        let textButton = document.createTextNode("Log Out");
-        logOutBtn.appendChild(textButton);
-        logOut.appendChild(logOutBtn);
-        logOutBtn.addEventListener("click", () => {
-            loggedInView.innerHTML = "";
-            message.innerHTML = "";
-        })
+        loggedOutView.style.display = "none"
+        message.innerHTML = ""
+        createAccForm.style.display = "none"
         logOutBtn.style.padding = "10px"; 
         logOutBtn.style.margin = "2px"; 
         logOutBtn.style.cursor = "pointer";
@@ -98,11 +85,25 @@ logInBtn.addEventListener("click", () => {
     }
 })
 
-function reloadLogInStatus() {
-    if (g) {
+        const logOut = document.getElementById("logOut");
+        let logOutBtn = document.createElement("button");
+        let textButton = document.createTextNode("Log Out");
+        logOutBtn.appendChild(textButton);
+        logOut.appendChild(logOutBtn);
+        logOutBtn.addEventListener("click", () => {
+            loggedInView.style.display = "none"
+            loggedOutView.style.display = "block"
+            createAccForm.style.display = "inline"
+            message.innerHTML = "";
+            loggedOutView.appendChild
+            createAccForm
+        })
 
-    } else if (g) {
+function reloadLogInStatus(logInStatus) {
+    if (logInStatus === null) {
 
+    } else if (logInStatus === personsRegister) {
+        
     }
 
 }
