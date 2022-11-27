@@ -101,6 +101,7 @@ logOut.appendChild(logOutBtn);
     })
 
 function reloadLogInStatus(logInStatus) {
+    let keepUsername = usernameInput.value;
     if (logInStatus === null) {
         //DO NOTHING
     } else if (logInStatus === "loggedIn") {
@@ -111,7 +112,7 @@ function reloadLogInStatus(logInStatus) {
         logOutBtn.style.margin = "2px"; 
         logOutBtn.style.cursor = "pointer";
         loggedInView.style.display = "block";
-        message.innerHTML = "You are logged in as: " + usernameInput.value;
+        message.innerHTML = "You are logged in as: " + keepUsername;
     }
 }
 
