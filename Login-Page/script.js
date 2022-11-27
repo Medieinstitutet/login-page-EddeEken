@@ -1,16 +1,9 @@
-/*
-1. Localstorage - skapa konto
-*/
-
 const usernameInput = document.getElementById("usernameInput");
 const passwordInput = document.getElementById("passwordInput");
 const logInBtn = document.getElementById("logInBtn");
 const createAccBtn = document.getElementById("createAccBtn");
 const closeBtn = document.getElementById("closeBtn");
 const createAccForm = document.getElementById("createAccForm");
-const userName = document.getElementById("userName");
-const password = document.getElementById("password");
-const passwordConfirm = document.getElementById("passwordConfirm");
 const loggedOutView = document.getElementById("loggedOutView");
 const message = document.getElementById("message");
 const loggedInView = document.getElementById("loggedInView");
@@ -20,7 +13,7 @@ let personsRegister = [
     {username:"edvin", password:"ekström"},
     {username:"java", password:"script"},
     {username:"potatis", password:"mannen"},
-]
+];
  
 createAccForm.addEventListener("click", () => {
     document.getElementById("accForm").style.display = "block";
@@ -37,31 +30,47 @@ if (localStorage.getItem("personsRegister")) {
  
     localStorage.setItem('personsRegister', JSON.stringify(personsRegister));
 }
- 
+
 createAccBtn.addEventListener("click", () => {
-
-    if (password === passwordConfirm) {
-        
-        let personsRegister = JSON.parse(localStorage.getItem("personsRegister"));
-
-        personsRegister.push({"username": userName.value,"password": password.value});
     
-        localStorage.setItem('personsRegister', JSON.stringify(personsRegister));
+    let userNameC = document.getElementById("userNameC").value;
+    let passWordC = document.getElementById("passWordC").value;
+    let passwordConfirmC = document.getElementById("passwordConfirmC").value;
 
-        message.insertAdjacentText = "You have successfully created an account!";
-        
-    } else {
-        function createAccError() {
-            message.insertAdjacentText = "Passwords not matching";
-        }
-        createAccError();
+    if (userNameC == "") {
+        alert("Please enter Username");
     }
-})
+        else if (passWordC == "") {
+            alert("Please enter Password");
+        }
+        else if (passwordConfirmC == "") {
+            alert("Please enter confirm Password");
+        }
+        else if (passWordC != passwordConfirmC) {
+            alert("Passwords did not match: Please try again!");
+            return false;
+        }
+        else {      
+            let personsRegister = JSON.parse(localStorage.getItem("personsRegister"));
+    
+            let newRegister = {
+                username: userNameC,
+                password: passWordC
+            };
+
+            personsRegister.push(newRegister);
+        
+            localStorage.setItem("personsRegister", JSON.stringify(personsRegister));
+    
+            alert("You have successfully created an account!");
+            return true;
+        }
+    })
 
 logInBtn.addEventListener("click", () => { 
     let personsRegister = JSON.parse(localStorage.getItem("personsRegister"));
-    for (i = 0; i < personsRegister.length; i++) {
-      if (usernameInput.value == personsRegister[i].username && passwordInput.value == personsRegister[i].password) {
+    let findUser = personsRegister.find(findUser => findUser.username === usernameInput.value)
+        if (findUser && findUser.password === passwordInput.value) {
         loggedOutView.style.display = "none"
         message.innerHTML = ""
         createAccForm.style.display = "none"
@@ -75,11 +84,9 @@ logInBtn.addEventListener("click", () => {
     } else {
         message.innerHTML = "User not found";
     }
-    }
 })
 
 let LoggedIn = JSON.parse(localStorage.getItem("loggedIn"));
-
 const logOut = document.getElementById("logOut");
 let logOutBtn = document.createElement("button");
 let textButton = document.createTextNode("Log Out");

@@ -10,7 +10,7 @@
 </head>
 <body>
     <header>
-        <h1>Welcome to this basic login website!</h1>
+        <h1>Welcome to this basic login function!</h1>
     </header>
 
     <div id="loggedOutView">
@@ -21,18 +21,18 @@
     </div>
    
 <div class="form-popup" id="accForm">
-  <form class="form-container">
+  <div class="form-container">
     <h1>Create Account</h1>
-    <input type="text" id="userName" placeholder="Enter Username">
-    <input type="text" id="password" placeholder="Enter Password">
-    <input type="text" id="passwordConfirm" placeholder="Confirm Password">
-    <button id="createAccBtn">Create Account</button>
-    <button type="button" id="closeBtn">Close</button>
-  </form>
+    <input class="margin" type="text" id="userNameC" placeholder="Enter Username">
+    <input class="margin" type="text" id="passWordC" placeholder="Enter Password">
+    <input class="margin" type="text" id="passwordConfirmC" placeholder="Confirm Password"> <br>
+    <button class="margin" id="createAccBtn">Create Account</button>
+    <button class="margin" id="closeBtn">Close</button>
+  </div>
 </div>
 
 <div id="loggedInView">
-    <h3>Salamalekum</h3>
+    <h3>Salamalekum, you are now logged in!</h3>
     <p>Welcome to this simple website, enjoy your time here!</p>
     <div id="logOut"></div>
 </div>
@@ -40,7 +40,7 @@
 <p id="message"></p>
 
 <footer>
-    <p class="disclaimer">Copyright © 2022, This website is an experiment and therefore you should not use your actual password!</p>
+    <p class="disclaimer">Copyright © 2022, This website is an experiment and therefore you should not use your actual passwords!</p>
 </footer>
 </body>
 </html>
