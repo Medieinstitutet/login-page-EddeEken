@@ -24,10 +24,8 @@ closeBtn.addEventListener("click", () => {
   })
  
 if (localStorage.getItem("personsRegister")) {
-    console.log("Det finns sparat i LS");
+    //DO NOTHING
 } else {
-    console.log("Finns inget sparat i LS");
- 
     localStorage.setItem('personsRegister', JSON.stringify(personsRegister));
 }
 
@@ -117,5 +115,4 @@ function reloadLogInStatus(logInStatus) {
         message.innerHTML = "You are logged in as: " + currentLoggedIn;
     }
 }
-
 window.onload = reloadLogInStatus(localStorage.getItem("loginStatus"))
