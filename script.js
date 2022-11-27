@@ -71,15 +71,16 @@ logInBtn.addEventListener("click", () => {
     let personsRegister = JSON.parse(localStorage.getItem("personsRegister"));
     let findUser = personsRegister.find(findUser => findUser.username === usernameInput.value)
         if (findUser && findUser.password === passwordInput.value) {
-        loggedOutView.style.display = "none"
-        message.innerHTML = ""
-        createAccForm.style.display = "none"
+        loggedOutView.style.display = "none";
+        message.innerHTML = "";
+        createAccForm.style.display = "none";
         logOutBtn.style.padding = "10px"; 
         logOutBtn.style.margin = "2px"; 
         logOutBtn.style.cursor = "pointer";
         loggedInView.style.display = "block";
         message.innerHTML = "You are logged in as: " + usernameInput.value;
         localStorage.setItem("loginStatus", "loggedIn");
+        localStorage.setItem("currentLoggedIn", usernameInput.value);
         return true;
     } else {
         message.innerHTML = "User not found";
@@ -93,26 +94,27 @@ let textButton = document.createTextNode("Log Out");
 logOutBtn.appendChild(textButton);
 logOut.appendChild(logOutBtn);
     logOutBtn.addEventListener("click", () => {
-        loggedInView.style.display = "none"
-        loggedOutView.style.display = "block"
-        createAccForm.style.display = "inline"
+        loggedInView.style.display = "none";
+        loggedOutView.style.display = "block";
+        createAccForm.style.display = "inline";
         message.innerHTML = "";
         localStorage.removeItem("loginStatus");
+        localStorage.removeItem("currentLoggedIn");
     })
 
 function reloadLogInStatus(logInStatus) {
-    let keepUsername = usernameInput.value;
+    let currentLoggedIn = localStorage.getItem("currentLoggedIn");
     if (logInStatus === null) {
         //DO NOTHING
     } else if (logInStatus === "loggedIn") {
-        loggedOutView.style.display = "none"
-        message.innerHTML = ""
-        createAccForm.style.display = "none"
+        loggedOutView.style.display = "none";
+        message.innerHTML = "";
+        createAccForm.style.display = "none";
         logOutBtn.style.padding = "10px"; 
         logOutBtn.style.margin = "2px"; 
         logOutBtn.style.cursor = "pointer";
         loggedInView.style.display = "block";
-        message.innerHTML = "You are logged in as: " + keepUsername;
+        message.innerHTML = "You are logged in as: " + currentLoggedIn;
     }
 }
 
