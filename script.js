@@ -61,6 +61,9 @@ createAccBtn.addEventListener("click", () => {
             localStorage.setItem("personsRegister", JSON.stringify(personsRegister));
     
             alert("You have successfully created an account!");
+
+            document.getElementById("accForm").style.display = "none";
+
             return true;
         }
     })
